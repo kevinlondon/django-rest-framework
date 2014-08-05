@@ -17,8 +17,9 @@ class APIException(Exception):
     status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     default_detail = ''
 
-    def __init__(self, detail=None):
+    def __init__(self, detail=None, status_code=None):
         self.detail = detail or self.default_detail
+        self.status_code = status_code or self.status_code
 
     def __str__(self):
         return self.detail
